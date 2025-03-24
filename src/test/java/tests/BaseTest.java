@@ -7,8 +7,12 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.asserts.SoftAssert;
+import pages.NewProjectModalPage;
+import pages.NewSuiteModalPage;
+import pages.ProjectPage;
+import pages.ProjectsListPage;
 import steps.LoginSteps;
-import utils.PropertyReader;
+import steps.ProjectsSteps;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -18,14 +22,21 @@ import static com.codeborne.selenide.WebDriverRunner.setWebDriver;
 public class BaseTest {
 
     protected LoginSteps loginSteps;
-    public static String USER = PropertyReader.getProperty("user");
-    public static String PASSWORD = PropertyReader.getProperty("password");
-    public static String LOGIN_URL = PropertyReader.getProperty("loginUrl");
+    protected ProjectsSteps projectsSteps;
+    protected ProjectPage projectPage;
+    protected NewProjectModalPage newProjectModalPage;
+    protected ProjectsListPage projectsListPage;
+    protected NewSuiteModalPage newSuiteModalPage;
 
     SoftAssert softAssert = new SoftAssert();
 
     public void initPages(){
         loginSteps = new LoginSteps();
+        projectsSteps = new ProjectsSteps();
+        projectPage = new ProjectPage();
+        newProjectModalPage = new NewProjectModalPage();
+        projectsListPage = new ProjectsListPage();
+        newSuiteModalPage = new NewSuiteModalPage();
     }
 
     @BeforeMethod
