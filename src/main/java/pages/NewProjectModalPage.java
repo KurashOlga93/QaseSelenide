@@ -17,14 +17,14 @@ public class NewProjectModalPage extends ProjectsListPage {
         return this;
     }
 
-    public ProjectPage fillProjectsForm(String name, String description) {
+    public NewProjectModalPage fillProjectsForm(String name,String code, String description) {
         isOpened();
         wait.until(ExpectedConditions.visibilityOf(CREATE_PROJECT_BUTTON));
         new Input("project-name").writeToProjectsField(name);
         new Input("project-code").clear();
-
+        new Input("project-code").writeToProjectsField(code);
         new Input("description-area").write(description);
         new Button().click(CREATE_PROJECT_BUTTON);
-        return new ProjectPage();
+        return new NewProjectModalPage();
     }
 }

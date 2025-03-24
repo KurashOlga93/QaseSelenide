@@ -17,6 +17,7 @@ import steps.ProjectsSteps;
 import java.util.HashMap;
 import java.util.Map;
 
+import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 import static com.codeborne.selenide.WebDriverRunner.setWebDriver;
 
 public class BaseTest {
@@ -30,7 +31,7 @@ public class BaseTest {
 
     SoftAssert softAssert = new SoftAssert();
 
-    public void initPages(){
+    public void initPages() {
         loginSteps = new LoginSteps();
         projectsSteps = new ProjectsSteps();
         projectPage = new ProjectPage();
@@ -40,7 +41,7 @@ public class BaseTest {
     }
 
     @BeforeMethod
-    public  void initTest(){
+    public void initTest() {
 
         ChromeOptions options = new ChromeOptions();
         Map<String, Object> prefs = new HashMap<>();
@@ -58,8 +59,8 @@ public class BaseTest {
     }
 
     @AfterMethod
-    public void endTest(){
+    public void endTest() {
         softAssert.assertAll();
-        //getWebDriver().quit();
+        getWebDriver().quit();
     }
 }

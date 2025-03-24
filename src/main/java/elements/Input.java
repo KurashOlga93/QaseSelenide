@@ -2,8 +2,6 @@ package elements;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
-import org.openqa.selenium.WebElement;
-
 import static com.codeborne.selenide.Selenide.$x;
 
 public class Input {
@@ -17,18 +15,18 @@ public class Input {
         this.label = label;
     }
 
-    public Input write(String text){
+    public Input write(String text) {
         $x(String.format(inputLocator, label)).shouldBe(Condition.visible).setValue(text);
         return this;
     }
 
-    public Input writeToProjectsField(String text){
+    public Input writeToProjectsField(String text) {
         $x(String.format(inputCreateProjectLocator, label)).shouldBe(Condition.visible).setValue(text);
         return this;
     }
 
-    public Input clear(){
-        SelenideElement element = $x(String.format(inputLocator, label));
+    public Input clear() {
+        SelenideElement element = $x(String.format(inputCreateProjectLocator, label));
         element.click();
         element.clear();
         return this;

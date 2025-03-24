@@ -2,9 +2,7 @@ package pages;
 
 import com.codeborne.selenide.SelenideElement;
 import elements.Button;
-import elements.Input;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-
 
 import static com.codeborne.selenide.Selenide.$x;
 
@@ -16,7 +14,7 @@ public class ProjectsListPage extends BasePage {
     private static final SelenideElement REMOVE_BUTTON = $x("//*[@data-testid='remove']");
     private static final SelenideElement DELETE_PROJECT_BUTTON = $x("//*[@type='button']//*[text()='Delete project']");
 
-    public ProjectsListPage isOpened(){
+    public ProjectsListPage isOpened() {
         wait.until(ExpectedConditions.visibilityOf(CREATE_NEW_PROJECT));
         return this;
     }

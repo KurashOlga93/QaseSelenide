@@ -11,18 +11,18 @@ import static tests.LoginTest.*;
 
 public class ProjectsListTest extends BaseTest {
 
-    public static String PROJECT_NAME = PropertyReader.getProperty("Project");
-    public static String PROJECT_DESCRIPTION = PropertyReader.getProperty("This is description.");
-    private static final SelenideElement CREATE_NEW_SUITE = $x("//*[text()='Create new Suite']");
+    public static String PROJECT_NAME = PropertyReader.getProperty("projectName");
+    public static String PROJECT_DESCRIPTION = PropertyReader.getProperty("projectDescription");
+    public static String PROJECT_CODE = PropertyReader.getProperty("projectCode");
+    private static final SelenideElement CREATE_NEW_SUITE = $x("//*[text()='Create new suite']");
     private static final SelenideElement TABLE = $x("//table");
-
 
     @Test
     public void createProjectTest() {
         loginSteps.
                 login(USER, PASSWORD, LOGIN_URL);
         projectsSteps.
-                createProject(PROJECT_NAME, PROJECT_DESCRIPTION);
+                createProject(PROJECT_NAME, PROJECT_CODE, PROJECT_DESCRIPTION);
         CREATE_NEW_SUITE.shouldBe(Condition.visible);
     }
 
@@ -41,4 +41,3 @@ public class ProjectsListTest extends BaseTest {
         TABLE.shouldBe(Condition.disappear);
     }
 }
-

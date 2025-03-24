@@ -9,7 +9,6 @@ import static com.codeborne.selenide.Selenide.$x;
 
 public class NewSuiteModalPage extends ProjectPage {
 
-    private static final SelenideElement CREATE_NEW_SUITE = $x("//*[text()='Create new Suite']");
     private static final SelenideElement CREATE_BUTTON = $x("//button[@type='submit']");
 
     public NewSuiteModalPage isOpened() {

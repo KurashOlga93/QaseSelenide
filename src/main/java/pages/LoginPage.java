@@ -4,6 +4,7 @@ import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import elements.Button;
 import elements.Input;
+
 import static com.codeborne.selenide.Selenide.$x;
 import static com.codeborne.selenide.Selenide.open;
 
@@ -14,12 +15,12 @@ public class LoginPage extends BasePage {
     public LoginPage() {
     }
 
-    public LoginPage openLoginPage(String url){
+    public LoginPage openLoginPage(String url) {
         open(url);
         return this;
     }
 
-    public LoginPage isOpened(){
+    public LoginPage isOpened() {
         SIGN_IN.shouldBe(Condition.visible);
         return this;
     }

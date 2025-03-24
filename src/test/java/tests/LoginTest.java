@@ -2,7 +2,6 @@ package tests;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
-import org.testng.Assert;
 import org.testng.annotations.Test;
 import utils.PropertyReader;
 
@@ -17,8 +16,8 @@ public class LoginTest extends BaseTest {
     private static final SelenideElement PROJECTS_TITLE = $x("//h1[text()='Projects']");
 
     @Test
-        public void successLogin() {
-            loginSteps.login(USER, PASSWORD, LOGIN_URL);
-            PROJECTS_TITLE.shouldBe(Condition.visible);
-        }
+    public void successLogin() {
+        loginSteps.login(USER, PASSWORD, LOGIN_URL);
+        PROJECTS_TITLE.shouldBe(Condition.visible);
     }
+}

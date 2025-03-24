@@ -5,21 +5,23 @@ import pages.NewProjectModalPage;
 import pages.ProjectPage;
 import pages.ProjectsListPage;
 
-public class ProjectsSteps extends BaseSteps {
+public class ProjectsSteps {
 
     ProjectsListPage projectsListPage;
     NewProjectModalPage newProjectModalPage;
     ProjectPage projectPage;
+    LoginSteps loginSteps;
 
     public ProjectsSteps() {
         this.projectsListPage = new ProjectsListPage();
         this.newProjectModalPage = new NewProjectModalPage();
         this.projectPage = new ProjectPage();
+        this.loginSteps = new LoginSteps();
     }
 
     @Step("Create new project")
-    public void createProject(String name, String description) {
+    public void createProject(String name, String code, String description) {
         projectsListPage.openCreateProjectModal();
-        newProjectModalPage.fillProjectsForm(name, description);
+        newProjectModalPage.fillProjectsForm(name, code, description);
     }
 }
