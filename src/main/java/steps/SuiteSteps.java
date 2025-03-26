@@ -24,6 +24,6 @@ public class SuiteSteps {
     @Step("Create test suite")
     public void createSuite(String name) {
         projectPage.openNewSuiteModalPage();
-        newSuiteModalPage.fillSuiteForm(SUITE_NAME);
+        newSuiteModalPage.fillSuiteForm(name);
     }
 }

@@ -40,7 +40,11 @@ public class ProjectsSteps {
     @Step("Delete project end step")
     public void deleteProjectEndStep() {
         projectPage.clickHeaderProjectsButton();
-        projectsListPage.deleteExistProject();
+        if (projectsListPage.isProjectExist()) {
+            projectsListPage.deleteExistProject();
+        } else {
+            System.out.println("There is no projects.");
+        }
     }
 
     @Step("Login and check that project exist in list")

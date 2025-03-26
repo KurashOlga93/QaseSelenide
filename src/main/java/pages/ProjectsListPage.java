@@ -48,7 +48,6 @@ public class ProjectsListPage extends BasePage {
     }
 
     public ProjectsListPage deleteExistProject() {
-        isOpened();
         OPTIONS_BUTTON.click();
         REMOVE_BUTTON.click();
         DELETE_PROJECT_BUTTON.click();
