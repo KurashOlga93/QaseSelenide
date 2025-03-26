@@ -19,6 +19,5 @@ public class TestCaseTest extends BaseTest {
         projectPage.openTestCasePage();
         testCasePage.fillTestCaseForm(CASE_NAME, CASE_DESCRIPTION, CASE_PRECONDITION, CASE_POSTCONDITION);
         Assert.assertEquals(projectPage.getExistCaseName(), "New test case");
-        projectsSteps.deleteProjectEndStep();
     }
 }

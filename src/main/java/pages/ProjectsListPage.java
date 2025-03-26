@@ -1,5 +1,6 @@
 package pages;
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import elements.Button;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -25,6 +26,10 @@ public class ProjectsListPage extends BasePage {
         isOpened();
         PROJECT_NAME.click();
         return new ProjectPage();
+    }
+
+    public boolean isProjectExist() {
+        return PROJECT_NAME.exists();
     }
 
     public String getNoProjectsText() {

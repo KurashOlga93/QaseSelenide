@@ -19,9 +19,5 @@ public class Dropdown {
         $x(String.format(DROPDOWN_XPATH, label)).shouldBe(Condition.visible).click();
         $x(String.format(DROPDOWN_OPTIONS_XPATH, option)).shouldBe(Condition.visible).click();
     }
-
-    public String dropdownGetOption() {
-        $x(String.format(DROPDOWN_XPATH, label)).shouldBe(Condition.visible).click();
-        return $x(String.format(DROPDOWN_OPTIONS_XPATH)).shouldBe(Condition.visible).getSelectedOptionValue();
-    }
+    
 }

@@ -58,5 +58,11 @@ public class BaseTest {
 
     @AfterMethod
     public void endTest() {
+        projectPage.clickHeaderProjectsButton();
+        if (projectsListPage.isProjectExist()) {
+            projectsListPage.deleteExistProject();
+        }else {
+            System.out.println("There is no projects.");
+        }
     }
 }

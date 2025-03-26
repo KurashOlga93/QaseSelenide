@@ -19,7 +19,6 @@ public class ProjectsListTest extends BaseTest {
         projectsSteps.
                 createProject(PROJECT_NAME, PROJECT_CODE, PROJECT_DESCRIPTION);
         Assert.assertEquals(projectPage.checkCreateSuiteButton(), "Create new suite");
-        projectsSteps.deleteProjectEndStep();
     }
 
     @Test
@@ -27,7 +26,6 @@ public class ProjectsListTest extends BaseTest {
         projectsSteps.loginAndCreateProject(USER, PASSWORD, LOGIN_URL, PROJECT_NAME, PROJECT_CODE, PROJECT_DESCRIPTION);
         projectPage.clickHeaderProjectsButton();
         Assert.assertEquals(projectsListPage.getExistProjectName(), "Olga");
-        projectsSteps.deleteProjectEndStep();
     }
 
     @Test

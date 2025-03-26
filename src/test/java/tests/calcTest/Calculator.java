@@ -1,4 +1,4 @@
-package tests;
+package tests.calcTest;
 
 public class Calculator {
 

@@ -12,8 +12,6 @@ public class TestCasePage extends BasePage {
     private static final SelenideElement SAVE_CASE_BUTTON = $x("//*[@id='save-case']");
     private static final SelenideElement ADD_STEP_BUTTON = $x("//*[@type='button']//*[text()=' Add step']");
     private static final SelenideElement STEP_ACTION_INPUT = $x("(//*[@class = 'OwrMko']//*[contains(@class, 'ProseMirror toastui-editor-contents')])[1]");
-    private static final SelenideElement DATA_INPUT = $x("(//*[@class = 'OwrMko']//*[contains(@class, 'ProseMirror toastui-editor-contents')])[2]");
-    private static final SelenideElement EXPECTED_RESULT_INPUT = $x("(//*[@id='expected_result']");
 
     public ProjectPage fillTestCaseForm(String name, String description, String precondition, String postcondition) {
         new Input("title").write(name);

@@ -14,7 +14,6 @@ public class SuiteListTests extends ProjectsListTest {
         projectsSteps.loginAndCreateProject(USER, PASSWORD, LOGIN_URL, PROJECT_NAME, PROJECT_CODE, PROJECT_DESCRIPTION);
         suiteSteps.createSuite(SUITE_NAME);
         Assert.assertEquals(projectPage.getExistSuiteName(), "My first suite");
-        projectsSteps.deleteProjectEndStep();
     }
 
     @Test(description = "Delete suite test and check text")
@@ -24,6 +23,5 @@ public class SuiteListTests extends ProjectsListTest {
         projectPage.deleteExistSuite();
         String noSuitesText = projectPage.getNoSuitesText();
         Assert.assertEquals(noSuitesText, "Looks like you don’t have any suites and cases yet.");
-        projectsSteps.deleteProjectEndStep();
     }
 }
