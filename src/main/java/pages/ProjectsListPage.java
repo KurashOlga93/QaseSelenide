@@ -13,6 +13,8 @@ public class ProjectsListPage extends BasePage {
     private static final SelenideElement OPTIONS_BUTTON = $x("//*[@data-icon='ellipsis-vertical']");
     private static final SelenideElement REMOVE_BUTTON = $x("//*[@data-testid='remove']");
     private static final SelenideElement DELETE_PROJECT_BUTTON = $x("//*[@type='button']//*[text()='Delete project']");
+    private static final SelenideElement NO_PROJECTS_TEXT = $x("//*[text()='Looks like you don’t have any projects yet.']");
+
 
     public ProjectsListPage isOpened() {
         wait.until(ExpectedConditions.visibilityOf(CREATE_NEW_PROJECT));
@@ -23,6 +25,10 @@ public class ProjectsListPage extends BasePage {
         isOpened();
         PROJECT_NAME.click();
         return new ProjectPage();
+    }
+
+    public String getNoProjectsText() {
+        return NO_PROJECTS_TEXT.getText();
     }
 
     public NewProjectModalPage openCreateProjectModal() {

@@ -6,18 +6,14 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
-import org.testng.asserts.SoftAssert;
-import pages.NewProjectModalPage;
-import pages.NewSuiteModalPage;
-import pages.ProjectPage;
-import pages.ProjectsListPage;
+import pages.*;
 import steps.LoginSteps;
 import steps.ProjectsSteps;
+import steps.SuiteSteps;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 import static com.codeborne.selenide.WebDriverRunner.setWebDriver;
 
 public class BaseTest {
@@ -28,8 +24,8 @@ public class BaseTest {
     protected NewProjectModalPage newProjectModalPage;
     protected ProjectsListPage projectsListPage;
     protected NewSuiteModalPage newSuiteModalPage;
-
-    SoftAssert softAssert = new SoftAssert();
+    protected SuiteSteps suiteSteps;
+    protected TestCasePage testCasePage;
 
     public void initPages() {
         loginSteps = new LoginSteps();
@@ -38,6 +34,8 @@ public class BaseTest {
         newProjectModalPage = new NewProjectModalPage();
         projectsListPage = new ProjectsListPage();
         newSuiteModalPage = new NewSuiteModalPage();
+        suiteSteps = new SuiteSteps();
+        testCasePage = new TestCasePage();
     }
 
     @BeforeMethod
@@ -60,7 +58,5 @@ public class BaseTest {
 
     @AfterMethod
     public void endTest() {
-        softAssert.assertAll();
-        getWebDriver().quit();
     }
 }

@@ -10,6 +10,9 @@ public class Input {
 
     public String inputLocator = "//*[@name='%s']";
     public String inputCreateProjectLocator = "//*[@id='%s']";
+    public String textAreaTestCaseLocator = "//*[contains(text(), '%s')]/parent::div//*[contains(@class, 'ProseMirror toastui-editor-contents')]";
+    private String inputCaseStepLocator = "//*[contains(@class, 'toastui-editor-ww-container')]//*[contains(text(), '%s')]";
+
 
     public Input(String label) {
         this.label = label;
@@ -17,6 +20,16 @@ public class Input {
 
     public Input write(String text) {
         $x(String.format(inputLocator, label)).shouldBe(Condition.visible).setValue(text);
+        return this;
+    }
+
+    public Input writeForInputCaseStep(String text) {
+        $x(String.format(inputCaseStepLocator, label)).shouldBe(Condition.visible).setValue(text);
+        return this;
+    }
+
+    public Input writeForTextareaForTestCase(String text) {
+        $x(String.format(textAreaTestCaseLocator, label)).shouldBe(Condition.visible).setValue(text);
         return this;
     }
 

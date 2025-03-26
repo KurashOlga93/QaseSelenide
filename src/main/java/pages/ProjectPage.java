@@ -13,6 +13,11 @@ public class ProjectPage extends BasePage {
     private static final SelenideElement DELETE_BUTTON = $x("//*[text()='Delete']");
     private static final SelenideElement SUBMIT_DELETE_BUTTON = $x("//button[@type='submit']");
     private static final SelenideElement SUITE_NAME = $x("//*[@title='My first suite']");
+    private static final SelenideElement NO_SUITES_TEXT = $x("//*[text()='Looks like you don’t have any suites and cases yet.']");
+    private static final SelenideElement PROJECTS_HEADER_BUTTON = $x("//a[text()='Projects']");
+    private static final SelenideElement NEW_TEST_BUTTON = $x("//*[text()='New test']");
+    private static final SelenideElement EXIST_CASE_NAME = $x("//*[text()='New test case']");
+
 
     public NewSuiteModalPage openNewSuiteModalPage() {
         wait.until(ExpectedConditions.visibilityOf(CREATE_NEW_SUITE));
@@ -20,8 +25,27 @@ public class ProjectPage extends BasePage {
         return new NewSuiteModalPage();
     }
 
+    public TestCasePage openTestCasePage() {
+        wait.until(ExpectedConditions.visibilityOf(NEW_TEST_BUTTON));
+        new Button().click(NEW_TEST_BUTTON);
+        return new TestCasePage();
+    }
+
+    public ProjectsListPage clickHeaderProjectsButton() {
+        PROJECTS_HEADER_BUTTON.click();
+        return new ProjectsListPage();
+    }
+
+    public String getNoSuitesText() {
+        return NO_SUITES_TEXT.getText();
+    }
+
     public String getExistSuiteName() {
         return SUITE_NAME.getText();
+    }
+
+    public String getExistCaseName() {
+        return EXIST_CASE_NAME.getText();
     }
 
     public ProjectPage deleteExistSuite() {
@@ -29,5 +53,9 @@ public class ProjectPage extends BasePage {
         DELETE_BUTTON.click();
         SUBMIT_DELETE_BUTTON.click();
         return new ProjectPage();
+    }
+
+    public String checkCreateSuiteButton() {
+        return CREATE_NEW_SUITE.getText();
     }
 }
