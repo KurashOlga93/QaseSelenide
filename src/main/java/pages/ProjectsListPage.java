@@ -29,7 +29,7 @@ public class ProjectsListPage extends BasePage {
     }
 
     public boolean isProjectExist() {
-        return PROJECT_NAME.exists();
+        return PROJECT_NAME.is(Condition.visible);
     }
 
     public String getNoProjectsText() {

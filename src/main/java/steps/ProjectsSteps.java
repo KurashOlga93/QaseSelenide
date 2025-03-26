@@ -1,7 +1,6 @@
 package steps;
 
 import io.qameta.allure.Step;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import pages.LoginPage;
 import pages.NewProjectModalPage;
 import pages.ProjectPage;
@@ -37,22 +36,11 @@ public class ProjectsSteps {
         newProjectModalPage.fillProjectsForm(name, code, description);
     }
 
-    @Step("Delete project end step")
-    public void deleteProjectEndStep() {
+    @Step("Delete project after test")
+    public void deleteProjectAfterTestStep() {
         projectPage.clickHeaderProjectsButton();
         if (projectsListPage.isProjectExist()) {
             projectsListPage.deleteExistProject();
-        } else {
-            System.out.println("There is no projects.");
         }
-    }
-
-    @Step("Login and check that project exist in list")
-    public boolean isProjectExist(String email, String password, String url) {
-        loginPage
-                .openLoginPage(url)
-                .login(email, password)
-                .isOpened();
-        return projectsListPage.isProjectExist();
     }
 }

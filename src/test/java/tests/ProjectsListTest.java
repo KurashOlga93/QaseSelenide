@@ -31,7 +31,8 @@ public class ProjectsListTest extends BaseTest {
     @Test
     public void deleteProjectTest() {
         projectsSteps.loginAndCreateProject(USER, PASSWORD, LOGIN_URL, PROJECT_NAME, PROJECT_CODE, PROJECT_DESCRIPTION);
-        projectsSteps.deleteProjectEndStep();
+        projectPage.clickHeaderProjectsButton();
+        projectsListPage.deleteExistProject();
         String noProjectsText = projectsListPage.getNoProjectsText();
         Assert.assertEquals(noProjectsText, "Looks like you don’t have any projects yet.");
     }

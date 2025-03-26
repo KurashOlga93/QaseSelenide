@@ -17,7 +17,7 @@ public class ProjectPage extends BasePage {
     private static final SelenideElement PROJECTS_HEADER_BUTTON = $x("//a[text()='Projects']");
     private static final SelenideElement NEW_TEST_BUTTON = $x("//*[text()='New test']");
     private static final SelenideElement EXIST_CASE_NAME = $x("//*[text()='New test case']");
-    private static final SelenideElement PROJECT_NAME = $x("//a[text()='Olga']");
+    private static final SelenideElement CREATE_NEW_PROJECT = $x("//*[text()='Create new project']");
 
 
 
@@ -35,7 +35,7 @@ public class ProjectPage extends BasePage {
 
     public ProjectsListPage clickHeaderProjectsButton() {
         PROJECTS_HEADER_BUTTON.click();
-        wait.until(ExpectedConditions.visibilityOf(PROJECT_NAME));
+        wait.until(ExpectedConditions.visibilityOf(CREATE_NEW_PROJECT));
         return new ProjectsListPage();
     }
 

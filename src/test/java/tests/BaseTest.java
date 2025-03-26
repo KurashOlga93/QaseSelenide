@@ -58,6 +58,6 @@ public class BaseTest {
 
     @AfterMethod
     public void endTest() {
-        projectsSteps.deleteProjectEndStep();
+        projectsSteps.deleteProjectAfterTestStep();
     }
 }
