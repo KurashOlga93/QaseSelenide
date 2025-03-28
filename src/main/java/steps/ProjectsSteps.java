@@ -26,6 +26,21 @@ public class ProjectsSteps {
         newProjectModalPage.fillProjectsForm(name, code, description);
     }
 
+    @Step("Go to Project page and check that project name is visible")
+    public void checkProjectNameVisible() {
+        projectPage.clickHeaderProjectsButton()
+                   .checkProjectNameVisible();
+    }
+
+    @Step("Go to Project page, delete project and check text")
+    public void deleteProjectAndCheckText() {
+        projectPage.clickHeaderProjectsButton();
+        projectsListPage.deleteExistProject()
+                .checkMessageNoProjects();
+    }
+
+
+
     @Step("Login and create project")
     public void loginAndCreateProject(String email, String password, String url, String name, String code, String description) {
         loginPage

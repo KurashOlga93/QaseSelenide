@@ -1,5 +1,6 @@
 package pages;
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import elements.Button;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -39,16 +40,19 @@ public class ProjectPage extends BasePage {
         return new ProjectsListPage();
     }
 
-    public String getNoSuitesText() {
-        return NO_SUITES_TEXT.getText();
+    public ProjectPage checkMessageNoSuitesAndCases() {
+       NO_SUITES_TEXT.shouldBe(Condition.visible);
+       return new ProjectPage();
     }
 
-    public String getExistSuiteName() {
-        return SUITE_NAME.getText();
+    public ProjectPage checkExistSuiteNameVisible() {
+        SUITE_NAME.shouldBe(Condition.visible);
+        return new ProjectPage();
     }
 
-    public String getExistCaseName() {
-        return EXIST_CASE_NAME.getText();
+    public ProjectPage checkExistCaseNameVisible() {
+        EXIST_CASE_NAME.shouldBe(Condition.visible);
+        return new ProjectPage();
     }
 
     public ProjectPage deleteExistSuite() {

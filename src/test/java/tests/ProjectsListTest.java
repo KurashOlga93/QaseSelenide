@@ -21,19 +21,15 @@ public class ProjectsListTest extends BaseTest {
         Assert.assertEquals(projectPage.checkCreateSuiteButton(), "Create new suite");
     }
 
-    @Test
+    @Test(description = "Create project and check project name")
     public void checkProjectNameTest() {
         projectsSteps.loginAndCreateProject(USER, PASSWORD, LOGIN_URL, PROJECT_NAME, PROJECT_CODE, PROJECT_DESCRIPTION);
-        projectPage.clickHeaderProjectsButton();
-        Assert.assertEquals(projectsListPage.getExistProjectName(), "Olga");
+        projectsSteps.checkProjectNameVisible();
     }
 
-    @Test
+    @Test(description = "Create project, delete created project and check message")
     public void deleteProjectTest() {
         projectsSteps.loginAndCreateProject(USER, PASSWORD, LOGIN_URL, PROJECT_NAME, PROJECT_CODE, PROJECT_DESCRIPTION);
-        projectPage.clickHeaderProjectsButton();
-        projectsListPage.deleteExistProject();
-        String noProjectsText = projectsListPage.getNoProjectsText();
-        Assert.assertEquals(noProjectsText, "Looks like you don’t have any projects yet.");
+        projectsSteps.deleteProjectAndCheckText();
     }
 }

@@ -10,6 +10,7 @@ import pages.*;
 import steps.LoginSteps;
 import steps.ProjectsSteps;
 import steps.SuiteSteps;
+import steps.TestCaseSteps;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -26,6 +27,7 @@ public class BaseTest {
     protected NewSuiteModalPage newSuiteModalPage;
     protected SuiteSteps suiteSteps;
     protected TestCasePage testCasePage;
+    protected TestCaseSteps testCaseSteps;
 
     public void initPages() {
         loginSteps = new LoginSteps();
@@ -36,6 +38,7 @@ public class BaseTest {
         newSuiteModalPage = new NewSuiteModalPage();
         suiteSteps = new SuiteSteps();
         testCasePage = new TestCasePage();
+        testCaseSteps = new TestCaseSteps();
     }
 
     @BeforeMethod

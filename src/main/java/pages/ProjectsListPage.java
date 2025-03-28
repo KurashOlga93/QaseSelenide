@@ -32,8 +32,9 @@ public class ProjectsListPage extends BasePage {
         return PROJECT_NAME.is(Condition.visible);
     }
 
-    public String getNoProjectsText() {
-        return NO_PROJECTS_TEXT.getText();
+    public ProjectsListPage checkMessageNoProjects() {
+        NO_PROJECTS_TEXT.shouldBe(Condition.visible);
+        return new ProjectsListPage();
     }
 
     public NewProjectModalPage openCreateProjectModal() {
@@ -42,9 +43,9 @@ public class ProjectsListPage extends BasePage {
         return new NewProjectModalPage();
     }
 
-    public String getExistProjectName() {
-        isOpened();
-        return PROJECT_NAME.getText();
+    public ProjectsListPage checkProjectNameVisible() {
+        PROJECT_NAME.shouldBe(Condition.visible);
+        return new ProjectsListPage();
     }
 
     public ProjectsListPage deleteExistProject() {

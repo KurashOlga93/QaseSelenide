@@ -3,8 +3,6 @@ package steps;
 import io.qameta.allure.Step;
 import pages.*;
 
-import static org.testng.CommandLineArgs.SUITE_NAME;
-
 public class SuiteSteps {
 
     ProjectsListPage projectsListPage;
@@ -25,5 +23,11 @@ public class SuiteSteps {
     public void createSuite(String name) {
         projectPage.openNewSuiteModalPage();
         newSuiteModalPage.fillSuiteForm(name);
+    }
+
+    @Step("Delete suite and check message")
+    public void deleteSuiteAndCheckMessage() {
+        projectPage.deleteExistSuite()
+                   .checkMessageNoSuitesAndCases();
     }
 }

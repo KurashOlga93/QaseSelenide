@@ -16,8 +16,6 @@ public class TestCaseTest extends BaseTest {
     @Test(description = "Create new test case")
     public void createTestCase() {
         projectsSteps.loginAndCreateProject(USER, PASSWORD, LOGIN_URL, PROJECT_NAME, PROJECT_CODE, PROJECT_DESCRIPTION);
-        projectPage.openTestCasePage();
-        testCasePage.fillTestCaseForm(CASE_NAME, CASE_DESCRIPTION, CASE_PRECONDITION, CASE_POSTCONDITION);
-        Assert.assertEquals(projectPage.getExistCaseName(), "New test case");
+        testCaseSteps.createCaseAndCheckCaseNameVisible (CASE_NAME, CASE_DESCRIPTION, CASE_PRECONDITION, CASE_POSTCONDITION);
     }
 }

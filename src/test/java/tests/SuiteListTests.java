@@ -1,11 +1,12 @@
 package tests;
 
-import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 import utils.PropertyReader;
 import static tests.LoginTest.*;
+import static tests.ProjectsListTest.*;
 
-public class SuiteListTests extends ProjectsListTest {
+public class SuiteListTests extends BaseTest {
 
     public static String SUITE_NAME = PropertyReader.getProperty("suiteName");
 
@@ -13,15 +14,13 @@ public class SuiteListTests extends ProjectsListTest {
     public void createSuiteTest() {
         projectsSteps.loginAndCreateProject(USER, PASSWORD, LOGIN_URL, PROJECT_NAME, PROJECT_CODE, PROJECT_DESCRIPTION);
         suiteSteps.createSuite(SUITE_NAME);
-        Assert.assertEquals(projectPage.getExistSuiteName(), "My first suite");
+        projectPage.checkExistSuiteNameVisible();
     }
 
     @Test(description = "Delete suite test and check text")
     public void deleteSuiteTest() {
         projectsSteps.loginAndCreateProject(USER, PASSWORD, LOGIN_URL, PROJECT_NAME, PROJECT_CODE, PROJECT_DESCRIPTION);
         suiteSteps.createSuite(SUITE_NAME);
-        projectPage.deleteExistSuite();
-        String noSuitesText = projectPage.getNoSuitesText();
-        Assert.assertEquals(noSuitesText, "Looks like you don’t have any suites and cases yet.");
+        suiteSteps.deleteSuiteAndCheckMessage();
     }
 }
