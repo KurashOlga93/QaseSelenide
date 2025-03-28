@@ -6,9 +6,11 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
-import org.testng.asserts.SoftAssert;
+import pages.*;
 import steps.LoginSteps;
-import utils.PropertyReader;
+import steps.ProjectsSteps;
+import steps.SuiteSteps;
+import steps.TestCaseSteps;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -18,18 +20,29 @@ import static com.codeborne.selenide.WebDriverRunner.setWebDriver;
 public class BaseTest {
 
     protected LoginSteps loginSteps;
-    public static String USER = PropertyReader.getProperty("user");
-    public static String PASSWORD = PropertyReader.getProperty("password");
-    public static String LOGIN_URL = PropertyReader.getProperty("loginUrl");
+    protected ProjectsSteps projectsSteps;
+    protected ProjectPage projectPage;
+    protected NewProjectModalPage newProjectModalPage;
+    protected ProjectsListPage projectsListPage;
+    protected NewSuiteModalPage newSuiteModalPage;
+    protected SuiteSteps suiteSteps;
+    protected TestCasePage testCasePage;
+    protected TestCaseSteps testCaseSteps;
 
-    SoftAssert softAssert = new SoftAssert();
-
-    public void initPages(){
+    public void initPages() {
         loginSteps = new LoginSteps();
+        projectsSteps = new ProjectsSteps();
+        projectPage = new ProjectPage();
+        newProjectModalPage = new NewProjectModalPage();
+        projectsListPage = new ProjectsListPage();
+        newSuiteModalPage = new NewSuiteModalPage();
+        suiteSteps = new SuiteSteps();
+        testCasePage = new TestCasePage();
+        testCaseSteps = new TestCaseSteps();
     }
 
     @BeforeMethod
-    public  void initTest(){
+    public void initTest() {
 
         ChromeOptions options = new ChromeOptions();
         Map<String, Object> prefs = new HashMap<>();
@@ -47,8 +60,7 @@ public class BaseTest {
     }
 
     @AfterMethod
-    public void endTest(){
-        softAssert.assertAll();
-        //getWebDriver().quit();
+    public void endTest() {
+        projectsSteps.deleteProjectAfterTestStep();
     }
 }

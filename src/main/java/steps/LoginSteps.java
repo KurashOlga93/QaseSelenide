@@ -3,7 +3,7 @@ package steps;
 import io.qameta.allure.Step;
 import pages.LoginPage;
 
-public class LoginSteps extends BaseSteps {
+public class LoginSteps {
 
     LoginPage loginPage;
 

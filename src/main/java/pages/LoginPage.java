@@ -15,12 +15,12 @@ public class LoginPage extends BasePage {
     public LoginPage() {
     }
 
-    public LoginPage openLoginPage(String url){
+    public LoginPage openLoginPage(String url) {
         open(url);
         return this;
     }
 
-    public LoginPage isOpened(){
+    public LoginPage isOpened() {
         SIGN_IN.shouldBe(Condition.visible);
         return this;
     }
